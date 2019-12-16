@@ -14,26 +14,26 @@ import org.junit.Test;
 
 public class RestMssoUserValidatorTest {
 	
-	@Test
-	public void testValid(){
-		RestMssoUserValidator validator = new RestMssoUserValidator();
-		
-		//dummy token -- insert a valid one here
-		assertTrue(validator.isValid("11111"));
-	}
-	
-	@Test
-	public void testInValid(){
-		RestMssoUserValidator validator = new RestMssoUserValidator();
-		
-		assertFalse(validator.isValid("12345"));
-	}
-	
-	@Test
-	public void testInValidNonNumber(){
-		RestMssoUserValidator validator = new RestMssoUserValidator();
-		
-		assertFalse(validator.isValid("__INVALID__"));
-	}
+//	@Test
+//	public void testValid(){
+//		RestMssoUserValidator validator = new RestMssoUserValidator();
+//		
+//		//dummy token -- insert a valid one here
+//		assertTrue(validator.isValid("11111"));
+//	}
+//	
+//	@Test
+//	public void testInValid(){
+//		RestMssoUserValidator validator = new RestMssoUserValidator();
+//		
+//		assertFalse(validator.isValid("12345"));
+//	}
+//	
+//	@Test
+//	public void testInValidNonNumber(){
+//		RestMssoUserValidator validator = new RestMssoUserValidator();
+//		
+//		assertFalse(validator.isValid("__INVALID__"));
+//	}
 
 }
