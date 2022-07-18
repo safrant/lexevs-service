@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-      <bean id="EvsServiceInfo" class="java.util.HashMap" singleton="false">
-            <constructor-arg>
-                  <map>
-                        <entry key="APPLICATION_SERVICE_BEAN" value-ref="LexEVSApplicationService"/>
-                        <entry key="AUTHENTICATION_SERVICE_BEAN" value-ref="EvsAuthenticationProvider"/>
-                        <entry key="APPLICATION_SERVICE_URL" value="http://lexevsapi61.nci.nih.gov/lexevsapi61/http/applicationService"/>
-                        <entry key="APPLICATION_SERVICE_CONFIG" value-ref="LexEVSApplicationServiceConfig"/>
-                  </map>
-            </constructor-arg>
-      </bean>
-      
-      <bean id="LexEVSInterceptor" class="org.LexGrid.LexBIG.caCore.client.proxy.LexEVSApplicationServiceProxy" singleton="false">
-            <property name="proxyFactory">
-                  <ref bean="DistributedProxyHelper"/>
-            </property>
-              <property name="dataServiceProxyHelper">
-                  <ref bean="DataServiceProxyHelper"/>
-            </property>       
-      </bean>
-      
-      <bean id="DistributedProxyHelper" class="org.LexGrid.LexBIG.caCore.client.proxy.LexEVSProxyHelperImpl" singleton="false"/>
-      <bean id="DataServiceProxyHelper" class="org.LexGrid.LexBIG.caCore.client.proxy.DataServiceProxyHelperImpl" singleton="false"/>
-      
-      <bean id="LexEVSApplicationService" class="org.springframework.aop.framework.ProxyFactoryBean">      
-            <property name="interceptorNames">
-             <list>
-             <value>LexEVSInterceptor</value>
-             <value>AppService</value>
-             </list>
-             </property>
-            <property name="interfaces" value="org.LexGrid.LexBIG.caCore.interfaces.LexEVSApplicationService"/>
-            <property name="singleton">
-				<value>false</value>
-			</property>
-      </bean>     
-      
-       <bean id="AppService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean" singleton="false">
-            <property name="serviceUrl" value="http://lexevsapi61.nci.nih.gov/lexevsapi61/http/applicationService"/>
-            <property name="serviceInterface" value="org.LexGrid.LexBIG.caCore.interfaces.LexEVSApplicationService"/>
-            <property name="httpInvokerRequestExecutor">
-                 <bean class="org.LexGrid.LexBIG.caCore.client.proxy.ProxyUnwrappingHttpInvokerRequestExecutor">
-                	<property name="proxyHelper" ref="DistributedProxyHelper"/>
-                </bean>
-             </property>
-       </bean>
-      
+<!--      <bean id="EvsServiceInfo" class="java.util.HashMap" singleton="false">-->
+<!--            <constructor-arg>-->
+<!--                  <map>-->
+<!--                        <entry key="APPLICATION_SERVICE_BEAN" value-ref="LexEVSApplicationService"/>-->
+<!--                        <entry key="AUTHENTICATION_SERVICE_BEAN" value-ref="EvsAuthenticationProvider"/>-->
+<!--                        <entry key="APPLICATION_SERVICE_URL" value="http://lexevsapi61.nci.nih.gov/lexevsapi61/http/applicationService"/>-->
+<!--                        <entry key="APPLICATION_SERVICE_CONFIG" value-ref="LexEVSApplicationServiceConfig"/>-->
+<!--                  </map>-->
+<!--            </constructor-arg>-->
+<!--      </bean>-->
+<!--&lt;!&ndash;      &ndash;&gt;-->
+<!--      <bean id="LexEVSInterceptor" class="org.LexGrid.LexBIG.caCore.client.proxy.LexEVSApplicationServiceProxy" singleton="false">-->
+<!--            <property name="proxyFactory">-->
+<!--                  <ref bean="DistributedProxyHelper"/>-->
+<!--            </property>-->
+<!--              <property name="dataServiceProxyHelper">-->
+<!--                  <ref bean="DataServiceProxyHelper"/>-->
+<!--            </property>       -->
+<!--      </bean>-->
+<!--      -->
+<!--      <bean id="DistributedProxyHelper" class="org.LexGrid.LexBIG.caCore.client.proxy.LexEVSProxyHelperImpl" singleton="false"/>-->
+<!--      <bean id="DataServiceProxyHelper" class="org.LexGrid.LexBIG.caCore.client.proxy.DataServiceProxyHelperImpl" singleton="false"/>-->
+<!--      -->
+<!--      <bean id="LexEVSApplicationService" class="org.springframework.aop.framework.ProxyFactoryBean">      -->
+<!--            <property name="interceptorNames">-->
+<!--             <list>-->
+<!--             <value>LexEVSInterceptor</value>-->
+<!--             <value>AppService</value>-->
+<!--             </list>-->
+<!--             </property>-->
+<!--            <property name="interfaces" value="org.LexGrid.LexBIG.caCore.interfaces.LexEVSApplicationService"/>-->
+<!--            <property name="singleton">-->
+<!--				<value>false</value>-->
+<!--			</property>-->
+<!--      </bean>     -->
+<!--      -->
+<!--       <bean id="AppService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean" singleton="false">-->
+<!--            <property name="serviceUrl" value="http://lexevsapi61.nci.nih.gov/lexevsapi61/http/applicationService"/>-->
+<!--            <property name="serviceInterface" value="org.LexGrid.LexBIG.caCore.interfaces.LexEVSApplicationService"/>-->
+<!--            <property name="httpInvokerRequestExecutor">-->
+<!--                 <bean class="org.LexGrid.LexBIG.caCore.client.proxy.ProxyUnwrappingHttpInvokerRequestExecutor">-->
+<!--                	<property name="proxyHelper" ref="DistributedProxyHelper"/>-->
+<!--                </bean>-->
+<!--             </property>-->
+<!--       </bean>-->
+<!--      -->
       <bean id="EvsAuthenticationProvider" class="org.acegisecurity.providers.rcp.RemoteAuthenticationProvider">
             <property name="remoteAuthenticationManager">
                   <bean class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">

@@ -4,9 +4,10 @@
 
 	<parent>
 		<groupId>edu.mayo.cts2.framework</groupId>
-		<artifactId>cts2-base-service-plugin</artifactId>
+		<artifactId>cts2-framework</artifactId>
 		<version>1.4.0-SNAPSHOT</version>
 	</parent>
+
 
 	<artifactId>lexevs-service</artifactId>
 	<version>1.6.5.FINAL</version>
@@ -58,7 +59,7 @@
 	<properties>
 		<forkCount>4</forkCount>
         <reuseForks>false</reuseForks>
-		<lexevs.version>6.5.5.FINAL</lexevs.version>
+		<lexevs.version>6.5.6.FINAL</lexevs.version>
 		<spring-security.version>${org.springframework-version}</spring-security.version>
 	</properties>
 
@@ -178,6 +179,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
+				<version>3.3.2</version>
 				<configuration>
 					<packagingExcludes>
 						WEB-INF/lib/icu4j*.jar,
@@ -246,7 +248,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.22.1</version>
+					<version>2.22.2</version>
 					<configuration>
 						<useSystemClassLoader>false</useSystemClassLoader>
 						<enableAssertions>false</enableAssertions>
@@ -381,18 +383,60 @@
 			<groupId>lexevs</groupId>
 			<artifactId>lexevs-valuesets</artifactId>
 			<version>${lexevs.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.ws</groupId>
+					<artifactId>spring-ws</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
 			<groupId>lexevs</groupId>
 			<artifactId>lexbig-model</artifactId>
 			<version>${lexevs.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.ws</groupId>
+					<artifactId>spring-ws</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
 			<groupId>lexevs</groupId>
 			<artifactId>lexgrid-model</artifactId>
 			<version>${lexevs.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.ws</groupId>
+					<artifactId>spring-ws</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -402,10 +446,18 @@
 			<type>test-jar</type>
 			<scope>test</scope>   
             <exclusions>
-                <exclusion>
-					<groupId>slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>     
-                </exclusion>
+					<exclusion>
+						<groupId>slf4j</groupId>
+						<artifactId>slf4j-log4j12</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-core</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework.ws</groupId>
+						<artifactId>spring-ws</artifactId>
+					</exclusion>
             </exclusions>
 		</dependency>
 
@@ -415,8 +467,16 @@
 			<version>${lexevs.version}</version>
 			<exclusions>
 				<exclusion>
-					<artifactId>cglib</artifactId>
-					<groupId>cglib</groupId>
+					<groupId>slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.ws</groupId>
+					<artifactId>spring-ws</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -425,12 +485,40 @@
 			<groupId>lexevs</groupId>
 			<artifactId>lexgrid-resourcereader</artifactId>
 			<version>${lexevs.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.ws</groupId>
+					<artifactId>spring-ws</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
 			<groupId>lexevs</groupId>
 			<artifactId>lexgrid-util</artifactId>
 			<version>${lexevs.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.ws</groupId>
+					<artifactId>spring-ws</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -443,6 +531,18 @@
 				<exclusion>
 					<artifactId>cglib</artifactId>
 					<groupId>cglib</groupId>
+				</exclusion>
+				<exclusion>
+					<groupId>slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.ws</groupId>
+					<artifactId>spring-ws</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -635,7 +735,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.8.2</version>
+			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -749,10 +849,10 @@
 			<name>Sonatype Releases</name>
 		</repository>
 
-		<repository>
-			<id>local.filebased</id>
-			<url>file://${basedir}/repo</url>
-		</repository>
+<!--		<repository>-->
+<!--			<id>local.filebased</id>-->
+<!--			<url>file://${basedir}/repo</url>-->
+<!--		</repository>-->
 
 	</repositories>
 
